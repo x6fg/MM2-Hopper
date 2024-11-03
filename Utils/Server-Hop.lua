@@ -1,4 +1,4 @@
---fixed i think
+--done and dusted
 local PlaceID = getgenv().placeId
 local AllIDs = {}
 local foundAnything = ""
@@ -7,9 +7,7 @@ local HttpService = game:GetService("HttpService")
 local TeleportService = game:GetService("TeleportService")
 local Players = game.Players
 local jsonFileName = "testing-utility.json"
-local lastRequestTime = 0 -- Track last request time to handle rate limit
 
--- Load existing IDs or create a new file
 local function loadIDs()
     print("Loading IDs from file...")
     local success, result = pcall(function()
@@ -82,7 +80,6 @@ local function TPReturner()
 
     clearFileIfHourChanged()
 
-    local serverFound = false
     for _, server in ipairs(Site.data) do
         local ID = tostring(server.id)
         print("Checking server ID:", ID, "Players:", server.playing, "/", server.maxPlayers)
@@ -90,8 +87,7 @@ local function TPReturner()
         if tonumber(server.maxPlayers) > tonumber(server.playing) and not table.find(AllIDs, ID) then
             print("Suitable server found:", ID)
             tryTeleport(ID)
-            serverFound = true
-            break
+            task.wait(4)
         end
     end
 end

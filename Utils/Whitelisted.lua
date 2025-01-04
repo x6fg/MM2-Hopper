@@ -2,7 +2,7 @@ return {
     3417167370, --itsterrer
     6207510703, --x66ns
     2914243596, --arabkeng
-    3390912163, -- .D
+    1885219959, -- .D sigma
     5678922277, -- exoticfatima8
     4516178448, -- AUrelia first accxx
     7245642336, -- Aurelia 2nd acc
